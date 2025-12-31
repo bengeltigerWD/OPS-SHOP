@@ -1447,9 +1447,34 @@
                 margin: 20px 0;
             }
             
+            /* মোবাইলে প্রতি লাইনে ২টি প্রোডাক্ট কার্ড */
             .products-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
+            }
+            
+            .product-card {
+                margin-bottom: 0;
+            }
+            
+            .product-title {
+                font-size: 18px;
+                height: 44px;
+            }
+            
+            .product-price {
+                font-size: 20px;
+            }
+            
+            .btn {
+                padding: 8px 12px;
+                font-size: 13px;
+                gap: 5px;
+            }
+            
+            .product-description {
+                font-size: 12px;
+                margin-bottom: 15px;
             }
             
             .slider-arrow {
@@ -1494,15 +1519,6 @@
             
             .checkout-form-container {
                 padding: 25px;
-            }
-            
-            .product-card {
-                margin-bottom: 0;
-            }
-            
-            .btn {
-                padding: 8px 16px;
-                font-size: 14px;
             }
         }
 
@@ -1719,7 +1735,8 @@
         <div id="checkout-page" class="page">
             <h1 class="page-title">📝 Checkout</h1>
             <div class="checkout-form-container">
-                <form id="checkout-form" action="https://formspree.io/f/xojvaazb" method="POST">
+                <!-- Formspree Form - Updated with your new form ID -->
+                <form id="checkout-form" action="https://formspree.io/f/mqankbpq" method="POST">
                     <input type="hidden" name="order_details" id="order-details-input">
                     <input type="hidden" name="total_amount" id="total-amount-input">
                     
@@ -1890,7 +1907,8 @@
                 </div>
                 <div class="contact-form">
                     <h2>Send us a Message</h2>
-                    <form action="https://formspree.io/f/xojvaazb" method="POST">
+                    <!-- Contact Form Formspree Link - Updated -->
+                    <form action="https://formspree.io/f/myznnpba" method="POST">
                         <div class="form-group">
                             <label for="contact-name">Full Name:</label>
                             <input type="text" id="contact-name" name="name" required placeholder="Enter your name">
@@ -2573,7 +2591,7 @@
             
             const deliveryCharge = 30; // ৳30 delivery charge
             
-            // Update hidden fields
+            // Update hidden fields BEFORE form submission
             document.getElementById('order-details-input').value = JSON.stringify(orderDetails);
             document.getElementById('total-amount-input').value = (subtotal + (deliveryCharge / 85)).toFixed(2);
             
@@ -2596,22 +2614,64 @@
             document.getElementById('checkout-total').textContent = `$${subtotal.toFixed(2)} + ৳${deliveryCharge}`;
         }
         
-        // Submit order function
+        // Submit order function - FIXED for Formspree
         function submitOrder() {
             // Generate order ID
             const orderId = Date.now().toString().slice(-6);
             document.getElementById('order-id-number').textContent = orderId;
             
-            // Clear cart
-            cart = [];
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartCount();
+            // Get form data
+            const form = document.getElementById('checkout-form');
             
-            // Show confirmation page
-            showPage('order-confirmation-page');
+            // Update hidden fields one more time before submission
+            renderCheckoutForm();
             
-            // Show notification
-            showNotification('Order submitted successfully! Our team will contact you soon.', 'success');
+            // Create FormData object
+            const formData = new FormData(form);
+            
+            // Add order ID to form data
+            formData.append('order_id', `OPSSHOP-${orderId}`);
+            
+            // Send form data to Formspree using AJAX
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Clear cart
+                    cart = [];
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    updateCartCount();
+                    
+                    // Show confirmation page
+                    showPage('order-confirmation-page');
+                    
+                    // Show notification
+                    showNotification('Order submitted successfully! Our team will contact you soon.', 'success');
+                    
+                    // Reset form
+                    form.reset();
+                    
+                    // Reset district selection
+                    document.getElementById('district').innerHTML = '<option value="">Select District</option>';
+                    document.getElementById('district').disabled = true;
+                    
+                    // Show success animation
+                    document.getElementById('order-confirmation-page').classList.add('success');
+                } else {
+                    return response.json().then(err => {
+                        throw new Error(err.error || 'Form submission failed');
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error submitting order:', error);
+                showNotification('There was an error submitting your order. Please check your internet connection and try again.', 'error');
+            });
         }
         
         // Render categories page
@@ -2873,7 +2933,7 @@
             }, 3000);
         }
         
-        // Add CSS for notifications
+        // Add CSS for notifications and success animation
         const notificationStyles = document.createElement('style');
         notificationStyles.textContent = `
             @keyframes slideInRight {
@@ -2884,6 +2944,16 @@
             @keyframes slideOutRight {
                 from { transform: translateX(0); opacity: 1; }
                 to { transform: translateX(100%); opacity: 0; }
+            }
+            
+            @keyframes successAnimation {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+            
+            .order-confirmation.success {
+                animation: successAnimation 0.5s ease;
             }
         `;
         document.head.appendChild(notificationStyles);
