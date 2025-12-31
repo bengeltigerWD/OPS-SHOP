@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1982,30 +1983,31 @@
     <script>
         // Dynamic Product Data with More Items
         const products = [
-            {
-                id: 1,
-                name: "Wireless Bluetooth Headphones",
-                price: 59.99,
-                oldPrice: 89.99,
-                shortDesc: "High-quality sound with noise cancellation",
-                longDesc: "Experience premium audio quality with these wireless Bluetooth headphones. Featuring active noise cancellation technology, they block out ambient noise for immersive listening. With 30-hour battery life, memory foam ear cushions, and Bluetooth 5.0 connectivity, these headphones are perfect for travel, work, or relaxing at home.",
-                images: [
-                    "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aGVhZHBob25lc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1572536147248-ac59a8abfa4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGhlYWRwaG9uZXN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=80"
-                ],
-                sku: "WH-1000XM4",
-                category: "electronics",
-                stock: 15,
-                rating: 4.5,
-                features: [
-                    "Active Noise Cancellation",
-                    "30-hour battery life",
-                    "Memory foam ear cushions",
-                    "Bluetooth 5.0",
-                    "Voice assistant support"
-                ],
-                reviews: 128
-            },
+          {
+    id: 1,
+    name: "Black Signature Death Note Book",
+    price:180,
+    oldPrice: 220,
+    shortDesc: "Premium Black Paper Notebook with Free Glitter Pen",
+    longDesc: "Experience the mystery and sophistication of our premium Death Note inspired notebook. Featuring high-quality jet-black pages that provide a unique canvas for writing and sketching. Each notebook comes with a complimentary metallic glitter pen specially formulated to stand out against the dark pages. As a bonus gift, receive an exclusive collectible calendar. Perfect for journaling, note-taking, or as a collector's item for anime enthusiasts.",
+    images: [
+        "blacknote1.png",
+        "https://images.unsplash.com/photo-1516979187457-637abb4f9353?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    ],
+    sku: "DEATH-NOTE-001",
+    category: "stationery",
+    stock: 120,
+    rating: 4.9,
+    features: [
+        "Premium jet-black paper throughout",
+        "Authentic Death Note inspired design",
+        "Includes free metallic glitter pen",
+        "Comes with exclusive collectible calendar",
+        "High-quality durable binding",
+        "Perfect for journaling and sketching"
+    ],
+    reviews: 15
+           },
             {
                 id: 2,
                 name: "Smart Fitness Tracker Watch",
@@ -2181,6 +2183,15 @@
         let slideInterval;
         const slideCount = 5;
         const slideDuration = 4000;
+		// ✅ formatPrice ফাংশন - এখানে যোগ করুন
+            function formatPrice(price) {
+    if (typeof price === 'string') {
+        price = price.replace(/[৳,]/g, '');
+    }
+    const numPrice = parseFloat(price);
+    return `৳${numPrice.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+}
+
         
         // Districts data for Bangladesh
         const districts = {
@@ -2450,9 +2461,9 @@
                             <span style="color: #666; font-size: 14px;">(${product.reviews})</span>
                         </div>
                         <div class="product-price">
-                            $${product.price.toFixed(2)}
-                            ${product.oldPrice ? `<span class="old-price">$${product.oldPrice.toFixed(2)}</span>` : ''}
-                        </div>
+    ${formatPrice(product.price)}
+    ${product.oldPrice ? `<span class="old-price">${formatPrice(product.oldPrice)}</span>` : ''}
+</div>
                         <p class="product-description">${product.shortDesc}</p>
                         <div class="product-actions">
                             <a href="${productPageUrl}" class="btn btn-primary" target="_blank">
@@ -2686,7 +2697,8 @@
                 'clothing': 'fas fa-tshirt',
                 'home': 'fas fa-home',
                 'beauty': 'fas fa-spa',
-                'sports': 'fas fa-running'
+                'sports': 'fas fa-running',
+				 'stationery': 'fas fa-pencil-alt'
             };
             
             categoriesContainer.innerHTML = '';
@@ -2962,4 +2974,4 @@
         document.addEventListener('DOMContentLoaded', initApp);
     </script>
 </body>
-</html>
+</html> 
