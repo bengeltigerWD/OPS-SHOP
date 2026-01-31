@@ -530,10 +530,11 @@
         .product-image {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* পুরো ছবি দেখাবে, কাটবে না */
+            object-fit: contain;
             transition: transform 0.5s ease;
             max-width: 100%;
             max-height: 100%;
+            border-radius: 8px;
         }
 
         .product-card:hover .product-image {
@@ -1209,6 +1210,134 @@
             width: 30px;
         }
 
+        /* My Orders Page */
+        .orders-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .order-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border: 2px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .order-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: #764ba2;
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .order-id {
+            font-size: 18px;
+            font-weight: 700;
+            color: #764ba2;
+        }
+
+        .order-date {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .order-status {
+            display: inline-block;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .status-processing {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-confirmed {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .status-delivered {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-cancelled {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .order-items {
+            margin-bottom: 20px;
+        }
+
+        .order-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+        }
+
+        .order-item-image {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            border-radius: 8px;
+            background: #f8f9fa;
+            padding: 5px;
+        }
+
+        .order-item-details {
+            flex: 1;
+        }
+
+        .order-item-details h4 {
+            margin-bottom: 5px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .order-item-price {
+            color: #ff4757;
+            font-weight: 600;
+        }
+
+        .order-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #f0f0f0;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .order-total .amount {
+            color: #ff4757;
+            font-size: 20px;
+        }
+
         /* WhatsApp Floating Button */
         #whatsapp-float {
             position: fixed;
@@ -1379,11 +1508,112 @@
             border-radius: 5px;
             margin-top: 10px;
             font-weight: 600;
+            min-height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .promo-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .promo-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
         }
 
         .discount-item {
             color: #4CAF50 !important;
             font-weight: 600;
+        }
+
+        /* Payment Methods Styles */
+        .payment-methods {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .payment-method {
+            flex: 1;
+            min-width: 200px;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            background: #f8f9fa;
+        }
+
+        .payment-method:hover {
+            border-color: #764ba2;
+            background: white;
+        }
+
+        .payment-method.selected {
+            border-color: #4CAF50;
+            background: #e8f5e9;
+        }
+
+        .payment-method-icon {
+            font-size: 30px;
+            margin-bottom: 10px;
+            color: #764ba2;
+        }
+
+        .payment-method-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .payment-method-desc {
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* Delivery Rules Styles */
+        .delivery-rules {
+            background: #f0f8ff;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #d1e7ff;
+            margin-top: 20px;
+        }
+
+        .delivery-rules h4 {
+            color: #2c5282;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .delivery-rules ul {
+            list-style: none;
+            padding-left: 10px;
+        }
+
+        .delivery-rules li {
+            margin-bottom: 8px;
+            padding-left: 25px;
+            position: relative;
+            color: #4a5568;
+        }
+
+        .delivery-rules li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
         }
 
         /* Notification Styles */
@@ -1615,6 +1845,30 @@
             #apply-promo {
                 width: 100%;
             }
+            
+            .payment-methods {
+                flex-direction: column;
+            }
+            
+            .payment-method {
+                min-width: 100%;
+            }
+            
+            .order-card {
+                padding: 20px;
+            }
+            
+            .order-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .order-total {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1728,6 +1982,7 @@
                         <li><a href="#" data-page="home"><i class="fas fa-home"></i> Home</a></li>
                         <li><a href="#" data-page="categories"><i class="fas fa-list"></i> Categories</a></li>
                         <li><a href="#" data-page="products"><i class="fas fa-box"></i> All Products</a></li>
+                        <li><a href="#" data-page="orders"><i class="fas fa-clipboard-list"></i> My Orders</a></li>
                         <li><a href="#" data-page="about"><i class="fas fa-info-circle"></i> About Us</a></li>
                         <li><a href="#" data-page="contact"><i class="fas fa-phone-alt"></i> Contact</a></li>
                     </ul>
@@ -1819,6 +2074,10 @@
                         <span>Delivery Charge:</span>
                         <span id="cart-delivery-charge">৳30.00</span>
                     </div>
+                    <div class="order-summary-item" id="cart-discount-item" style="display: none; color: #4CAF50;">
+                        <span>Discount:</span>
+                        <span>-<span id="cart-discount">৳0.00</span></span>
+                    </div>
                     <div class="order-summary-item total">
                         <span>Total:</span>
                         <span id="cart-total">৳30.00</span>
@@ -1838,6 +2097,10 @@
                 <form id="checkout-form" action="https://formspree.io/f/myznnpba" method="POST">
                     <input type="hidden" name="order_details" id="order-details-input">
                     <input type="hidden" name="total_amount" id="total-amount-input">
+                    <input type="hidden" name="applied_promo" id="applied-promo-input">
+                    <input type="hidden" name="discount_amount" id="discount-amount-input">
+                    <input type="hidden" name="payment_method" id="payment-method-input">
+                    <input type="hidden" name="order_id" id="order-id-input">
                     
                     <div class="form-section">
                         <h3><i class="fas fa-user"></i> Personal Information</h3>
@@ -1916,14 +2179,57 @@
                     <div class="form-section">
                         <h3><i class="fas fa-tag"></i> Promo Code</h3>
                         <div class="form-group">
+                            <label for="promo-code">Enter Promo Code</label>
                             <div class="promo-code-container">
-                                <input type="text" id="promo-code" placeholder="Enter promo code">
+                                <input type="text" id="promo-code" placeholder="Enter promo code" value="">
                                 <button type="button" id="apply-promo" class="btn btn-primary">
                                     <i class="fas fa-check"></i> Apply
                                 </button>
                             </div>
-                            <div id="promo-message" style="display: none;"></div>
-                            <small>Available promo codes: SAVE10 (10% off), SAVE20 (20% off), SAVE30 (30% off), FREE50 (৳50 off), SHIPFREE (Free shipping)</small>
+                            <div id="promo-message"></div>
+                            <small>Available promo codes: <strong>SAVE10</strong> (10% off), <strong>SAVE20</strong> (20% off), <strong>SAVE30</strong> (30% off), <strong>FREE50</strong> (৳50 off), <strong>SHIPFREE</strong> (Free shipping)</small>
+                        </div>
+                    </div>
+
+                    <!-- পেমেন্ট মেথড সেকশন -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-money-bill-wave"></i> Payment Method</h3>
+                        <div class="form-group">
+                            <p>Please select your preferred payment method:</p>
+                            <div class="payment-methods">
+                                <div class="payment-method" id="payment-cod">
+                                    <div class="payment-method-icon">
+                                        <i class="fas fa-money-bill"></i>
+                                    </div>
+                                    <div class="payment-method-title">Cash on Delivery</div>
+                                    <div class="payment-method-desc">Pay when you receive the product</div>
+                                </div>
+                                <div class="payment-method" id="payment-bkash">
+                                    <div class="payment-method-icon">
+                                        <i class="fas fa-mobile-alt"></i>
+                                    </div>
+                                    <div class="payment-method-title">Bkash / Nagad</div>
+                                    <div class="payment-method-desc">Send to: 01938954599</div>
+                                </div>
+                                <div class="payment-method" id="payment-card">
+                                    <div class="payment-method-icon">
+                                        <i class="fas fa-credit-card"></i>
+                                    </div>
+                                    <div class="payment-method-title">Bank Card</div>
+                                    <div class="payment-method-desc">Visa, Mastercard, Amex</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- ডেলিভারি রুলস -->
+                        <div class="delivery-rules">
+                            <h4><i class="fas fa-info-circle"></i> Delivery & Payment Rules:</h4>
+                            <ul>
+                                <li><strong>প্রোডাক্ট হাতে পেয়ে টাকা দিন</strong> - আমরা Cash on Delivery অফার করি</li>
+                                <li><strong>অথবা অগ্রীম পরিশোধ করুন</strong> - Bkash/Nagad: 01938954599</li>
+                                <li>৪টি প্রোডাক্টের বেশি হলে প্রতি ৪টিতে অতিরিক্ত ২০ টাকা ডেলিভারি চার্জ যোগ হবে</li>
+                                <li>অর্ডার কনফার্মেশনের ২ ঘন্টার মধ্যে আমাদের টিম আপনাকে কল করবে</li>
+                            </ul>
                         </div>
                     </div>
 
@@ -1934,6 +2240,10 @@
                                 <span>Products Total:</span>
                                 <span id="products-total">৳0.00</span>
                             </div>
+                            <div class="order-summary-item" id="checkout-discount-item" style="display: none; color: #4CAF50;">
+                                <span>Discount:</span>
+                                <span>-<span id="checkout-discount">৳0.00</span></span>
+                            </div>
                             <div class="order-summary-item">
                                 <span>Delivery Charge:</span>
                                 <span id="delivery-charge">৳30.00</span>
@@ -1942,7 +2252,7 @@
                                 <span>Total Amount:</span>
                                 <span id="checkout-total">৳30.00</span>
                             </div>
-                            <small>* Delivery charge of ৳30 will be added for all orders within Bangladesh</small>
+                            <small>* For orders above 4 products, additional ৳20 will be added for every 4 products</small>
                         </div>
                         
                         <button type="submit" class="btn btn-primary" style="padding: 15px 30px; font-size: 18px; width: 100%;">
@@ -1971,10 +2281,18 @@
                     <a href="#" data-page="home" class="btn btn-primary">
                         <i class="fas fa-home"></i> Back to Home
                     </a>
-                    <a href="#" data-page="products" class="btn btn-secondary">
-                        <i class="fas fa-shopping-bag"></i> Continue Shopping
+                    <a href="#" data-page="orders" class="btn btn-secondary">
+                        <i class="fas fa-clipboard-list"></i> View My Orders
                     </a>
                 </div>
+            </div>
+        </div>
+
+        <!-- My Orders Page -->
+        <div id="orders-page" class="page">
+            <h1 class="page-title">📋 My Orders</h1>
+            <div class="orders-container" id="orders-container">
+                <!-- Orders will be populated by JavaScript -->
             </div>
         </div>
 
@@ -2068,6 +2386,7 @@
                     <a href="#" data-page="home">Home</a>
                     <a href="#" data-page="categories">Categories</a>
                     <a href="#" data-page="products">All Products</a>
+                    <a href="#" data-page="orders">My Orders</a>
                     <a href="#" data-page="about">About Us</a>
                     <a href="#" data-page="contact">Contact</a>
                 </div>
@@ -2099,10 +2418,10 @@
           {
             id: 1,
             name: "Black Signature Death Note Book",
-            price: 180, // টাকা
+            price: 180,
             oldPrice: 220,
             shortDesc: "Premium Black Paper Notebook with Free Glitter Pen",
-            longDesc: "Experience the mystery and sophistication of our premium Death Note inspired notebook. Featuring high-quality jet-black pages that provide a unique canvas for writing and sketching. Each notebook comes with a complimentary metallic glitter pen specially formulated to stand out against the dark pages. As a bonus gift, receive an exclusive collectible calendar. Perfect for journaling, note-taking, or as a collector's item for anime enthusiasts.",
+            longDesc: "Experience the mystery and sophistication of our premium Death Note inspired notebook. Featuring high-quality jet-black pages that provide a unique canvas for writing and sketching.",
             images: [
                 "blacknote1.jpg",
                 "https://images.unsplash.com/photo-1516979187457-637abb4f9353?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
@@ -2116,21 +2435,19 @@
                 "Authentic Death Note inspired design",
                 "Includes free metallic glitter pen",
                 "Comes with exclusive collectible calendar",
-                "High-quality durable binding",
-                "Perfect for journaling and sketching"
+                "High-quality durable binding"
             ],
             reviews: 15
            },
             {
                 id: 2,
                 name: "Smart Fitness Tracker Watch",
-                price: 3999, // টাকা
+                price: 3999,
                 oldPrice: 5999,
                 shortDesc: "Track your activity, sleep, and heart rate",
-                longDesc: "Stay on top of your health and fitness goals with this advanced smart fitness tracker. Monitor your steps, calories burned, sleep patterns, and heart rate 24/7. Water-resistant up to 50 meters with 7-day battery life. Syncs seamlessly with your smartphone to display notifications and track various exercises automatically.",
+                longDesc: "Stay on top of your health and fitness goals with this advanced smart fitness tracker. Monitor your steps, calories burned, sleep patterns, and heart rate 24/7.",
                 images: [
-                    "https://images.unsplash.com/photo-1576243345690-4e4b79b63288?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGZpdG5lc3MlMkJ0cmFja2VyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1558536216-5f43d18a0816?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGZpdG5lc3MlMkJ0cmFja2VyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80"
+                    "https://images.unsplash.com/photo-1576243345690-4e4b79b63288?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGZpdG5lc3MlMkJ0cmFja2VyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80"
                 ],
                 sku: "FIT-2023-PRO",
                 category: "electronics",
@@ -2148,13 +2465,12 @@
             {
                 id: 3,
                 name: "Premium Stainless Steel Water Bottle",
-                price: 1299, // টাকা
+                price: 1299,
                 oldPrice: 1699,
                 shortDesc: "Keep your drinks hot or cold for hours",
-                longDesc: "Stay hydrated in style with this double-walled vacuum insulated stainless steel water bottle. Keeps beverages hot for 12 hours or cold for 24 hours. Features a leak-proof design, BPA-free materials, and durable stainless steel construction. Available in multiple colors with a comfortable carry handle.",
+                longDesc: "Stay hydrated in style with this double-walled vacuum insulated stainless steel water bottle. Keeps beverages hot for 12 hours or cold for 24 hours.",
                 images: [
-                    "https://images.unsplash.com/photo-1602143407151-7111542de6e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2F0ZXIlMkJib3R0bGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1605163398831-5b42d1a5dfc9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHdhdGVyJTJCYm90dGxlfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80"
+                    "https://images.unsplash.com/photo-1602143407151-7111542de6e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2F0ZXIlMkJib3R0bGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=80"
                 ],
                 sku: "BTL-SS-750",
                 category: "home",
@@ -2172,13 +2488,12 @@
             {
                 id: 4,
                 name: "Classic Cotton T-Shirt",
-                price: 799, // টাকা
+                price: 799,
                 oldPrice: 999,
                 shortDesc: "Soft, comfortable 100% cotton t-shirt",
-                longDesc: "This classic crewneck t-shirt is made from 100% premium cotton for ultimate softness and comfort. Pre-shrunk to maintain its perfect shape wash after wash. Features a modern fit with slightly tapered sides for a flattering silhouette. Perfect for casual wear, layering, or custom printing.",
+                longDesc: "This classic crewneck t-shirt is made from 100% premium cotton for ultimate softness and comfort. Pre-shrunk to maintain its perfect shape wash after wash.",
                 images: [
-                    "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHQlMjBzaGlydHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHQlMjBzaGlydHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                    "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHQlMjBzaGlydHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=80"
                 ],
                 sku: "TS-COT-PRE",
                 category: "clothing",
@@ -2192,112 +2507,10 @@
                     "Available in multiple colors"
                 ],
                 reviews: 234
-            },
-            {
-                id: 5,
-                name: "Professional Makeup Brush Set",
-                price: 2199, // টাকা
-                oldPrice: 2999,
-                shortDesc: "12-piece vegan brush collection",
-                longDesc: "Create flawless looks with this professional 12-piece makeup brush set. Made with synthetic vegan bristles that are soft to the touch and cruelty-free. Designed for precise application and blending, suitable for both beginners and professional makeup artists. Comes in a stylish travel case for convenience.",
-                images: [
-                    "https://images.unsplash.com/photo-1610548822783-33fb5cb7e7ee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG1ha2V1cCUyMGJydXNoJTIwc2V0fGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1571781926291-7772e39d7df3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fG1ha2V1cCUyMGJydXNoJTIwc2V0fGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80"
-                ],
-                sku: "BEAU-BR-12V",
-                category: "beauty",
-                stock: 31,
-                rating: 4.8,
-                features: [
-                    "12-piece brush set",
-                    "Vegan synthetic bristles",
-                    "Cruelty-free",
-                    "Travel case included",
-                    "Professional quality"
-                ],
-                reviews: 187
-            },
-            {
-                id: 6,
-                name: "Smartphone Camera Lens Kit",
-                price: 1499, // টাকা
-                oldPrice: 1999,
-                shortDesc: "Professional photography for your smartphone",
-                longDesc: "Transform your smartphone into a professional camera with this advanced lens kit. Includes wide-angle, macro, and telephoto lenses with clip-on design. Compatible with most smartphones. Perfect for photography enthusiasts looking to enhance their mobile photography capabilities.",
-                images: [
-                    "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FtZXJhJTIwbGVuc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=80"
-                ],
-                sku: "LENS-SMART-3IN1",
-                category: "electronics",
-                stock: 18,
-                rating: 4.4,
-                features: [
-                    "3 lenses in 1 kit",
-                    "Wide-angle, macro & telephoto",
-                    "Universal smartphone compatibility",
-                    "Easy clip-on design",
-                    "Carrying case included"
-                ],
-                reviews: 92
-            },
-            {
-                id: 7,
-                name: "Yoga Mat Premium",
-                price: 1799, // টাকা
-                oldPrice: 2399,
-                shortDesc: "Non-slip, eco-friendly yoga mat",
-                longDesc: "Practice yoga comfortably with this premium non-slip yoga mat. Made from eco-friendly TPE material, it provides excellent cushioning and traction. Includes carrying strap and is suitable for all types of yoga and exercise routines.",
-                images: [
-                    "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8eW9nYSUyMG1hdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=80"
-                ],
-                sku: "YOGA-PRO-MAT",
-                category: "sports",
-                stock: 25,
-                rating: 4.6,
-                features: [
-                    "Non-slip surface",
-                    "Eco-friendly TPE material",
-                    "Extra thick for comfort",
-                    "Includes carrying strap",
-                    "Easy to clean"
-                ],
-                reviews: 145
-            },
-            {
-                id: 8,
-                name: "Wireless Gaming Mouse",
-                price: 2499, // টাকা
-                oldPrice: 3299,
-                shortDesc: "High-precision gaming mouse",
-                longDesc: "Elevate your gaming experience with this wireless gaming mouse. Features high-precision sensor, programmable buttons, RGB lighting, and ergonomic design. Long battery life and low-latency wireless connection for competitive gaming.",
-                images: [
-                    "https://images.unsplash.com/photo-1527814050087-3793815479db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Z2FtaW5nJTIwbW91c2V8ZW58MHx8MHx8fDA%3D%3D&auto=format&fit=crop&w=800&q=80"
-                ],
-                sku: "GAME-MOUSE-WL",
-                category: "electronics",
-                stock: 22,
-                rating: 4.5,
-                features: [
-                    "High-precision sensor",
-                    "Programmable buttons",
-                    "RGB lighting",
-                    "Ergonomic design",
-                    "Long battery life"
-                ],
-                reviews: 203
             }
         ];
 
-        // Cart functionality
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        
-        // Image Slider Variables
-        let currentSlide = 0;
-        let slideInterval;
-        const slideCount = 5;
-        const slideDuration = 4000;
-        
-        // ✅ প্রোমো কোড ডেটা
+        // ✅ প্রোমো কোড ডেটা - সম্পূর্ণ ঠিক করা
         const promoCodes = {
             'SAVE10': { type: 'percentage', value: 10, message: '১০% ডিসকাউন্ট প্রয়োগ করা হয়েছে!' },
             'SAVE20': { type: 'percentage', value: 20, message: '২০% ডিসকাউন্ট প্রয়োগ করা হয়েছে!' },
@@ -2306,7 +2519,17 @@
             'SHIPFREE': { type: 'shipping', value: 30, message: 'ফ্রি ডেলিভারি প্রয়োগ করা হয়েছে!' }
         };
         
+        // Cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
         let appliedPromo = null;
+        let selectedPaymentMethod = 'cash_on_delivery';
+        let orders = JSON.parse(localStorage.getItem('orders')) || [];
+        
+        // Image Slider Variables
+        let currentSlide = 0;
+        let slideInterval;
+        const slideCount = 5;
+        const slideDuration = 4000;
         
         // ✅ formatPrice ফাংশন - শুধু টাকা ফরম্যাট
         function formatPrice(price) {
@@ -2346,6 +2569,8 @@
                 renderCart();
             } else if (pageId === 'checkout-page') {
                 renderCheckoutForm();
+            } else if (pageId === 'orders-page') {
+                renderOrders();
             } else if (pageId === 'categories-page') {
                 renderCategories();
             }
@@ -2401,8 +2626,46 @@
                 submitOrder();
             });
             
-            // Set up promo code button
-            document.getElementById('apply-promo').addEventListener('click', applyPromoCode);
+            // Set up promo code button - সম্পূর্ণ নতুন ফাংশন
+            document.getElementById('apply-promo').addEventListener('click', function() {
+                const promoInput = document.getElementById('promo-code');
+                const promoMessage = document.getElementById('promo-message');
+                const code = promoInput.value.trim().toUpperCase();
+                
+                if (!code) {
+                    promoMessage.innerHTML = '<span><i class="fas fa-exclamation-circle"></i> Please enter a promo code</span>';
+                    promoMessage.className = 'promo-error';
+                    return;
+                }
+                
+                if (promoCodes[code]) {
+                    appliedPromo = promoCodes[code];
+                    promoMessage.innerHTML = `<span><i class="fas fa-check-circle"></i> ${appliedPromo.message}</span>`;
+                    promoMessage.className = 'promo-success';
+                    
+                    // Update totals immediately
+                    updateCheckoutTotals();
+                    
+                    // Disable input and change button
+                    promoInput.disabled = true;
+                    const applyBtn = document.getElementById('apply-promo');
+                    applyBtn.innerHTML = '<i class="fas fa-times"></i> Remove';
+                    applyBtn.onclick = function() {
+                        removePromoCode();
+                    };
+                    
+                    showNotification(appliedPromo.message, 'success');
+                } else {
+                    promoMessage.innerHTML = '<span><i class="fas fa-times-circle"></i> Invalid promo code</span>';
+                    promoMessage.className = 'promo-error';
+                    appliedPromo = null;
+                    updateCheckoutTotals();
+                    showNotification('Invalid promo code. Please try again.', 'error');
+                }
+            });
+            
+            // Set up payment method selection
+            setupPaymentMethods();
             
             // Initialize image slider
             initImageSlider();
@@ -2419,6 +2682,61 @@
             document.getElementById('logo-image').onerror = function() {
                 this.src = 'https://images.unsplash.com/photo-1567446537710-0c5ff5a6ac32?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80';
             };
+        }
+        
+        // ✅ প্রোমো কোড রিমুভ ফাংশন
+        function removePromoCode() {
+            appliedPromo = null;
+            const promoInput = document.getElementById('promo-code');
+            const promoMessage = document.getElementById('promo-message');
+            
+            promoInput.value = '';
+            promoInput.disabled = false;
+            promoMessage.innerHTML = '';
+            promoMessage.className = '';
+            
+            const applyBtn = document.getElementById('apply-promo');
+            applyBtn.innerHTML = '<i class="fas fa-check"></i> Apply';
+            applyBtn.onclick = function() {
+                const promoInput = document.getElementById('promo-code');
+                const promoMessage = document.getElementById('promo-message');
+                const code = promoInput.value.trim().toUpperCase();
+                
+                if (!code) {
+                    promoMessage.innerHTML = '<span><i class="fas fa-exclamation-circle"></i> Please enter a promo code</span>';
+                    promoMessage.className = 'promo-error';
+                    return;
+                }
+                
+                if (promoCodes[code]) {
+                    appliedPromo = promoCodes[code];
+                    promoMessage.innerHTML = `<span><i class="fas fa-check-circle"></i> ${appliedPromo.message}</span>`;
+                    promoMessage.className = 'promo-success';
+                    
+                    // Update totals immediately
+                    updateCheckoutTotals();
+                    
+                    // Disable input and change button
+                    promoInput.disabled = true;
+                    applyBtn.innerHTML = '<i class="fas fa-times"></i> Remove';
+                    applyBtn.onclick = function() {
+                        removePromoCode();
+                    };
+                    
+                    showNotification(appliedPromo.message, 'success');
+                } else {
+                    promoMessage.innerHTML = '<span><i class="fas fa-times-circle"></i> Invalid promo code</span>';
+                    promoMessage.className = 'promo-error';
+                    appliedPromo = null;
+                    updateCheckoutTotals();
+                    showNotification('Invalid promo code. Please try again.', 'error');
+                }
+            };
+            
+            // Update totals
+            updateCheckoutTotals();
+            
+            showNotification('Promo code removed', 'info');
         }
         
         // Image Slider Functions
@@ -2538,6 +2856,37 @@
             });
         }
         
+        // Payment Methods Setup
+        function setupPaymentMethods() {
+            const paymentMethods = document.querySelectorAll('.payment-method');
+            
+            paymentMethods.forEach(method => {
+                method.addEventListener('click', function() {
+                    // Remove selected class from all
+                    paymentMethods.forEach(m => m.classList.remove('selected'));
+                    
+                    // Add selected class to clicked
+                    this.classList.add('selected');
+                    
+                    // Set selected payment method
+                    if (this.id === 'payment-cod') {
+                        selectedPaymentMethod = 'cash_on_delivery';
+                        document.getElementById('payment-method-input').value = 'Cash on Delivery';
+                    } else if (this.id === 'payment-bkash') {
+                        selectedPaymentMethod = 'bkash_nagad';
+                        document.getElementById('payment-method-input').value = 'Bkash/Nagad';
+                    } else if (this.id === 'payment-card') {
+                        selectedPaymentMethod = 'bank_card';
+                        document.getElementById('payment-method-input').value = 'Bank Card';
+                    }
+                });
+            });
+            
+            // Set default to Cash on Delivery
+            document.getElementById('payment-cod').classList.add('selected');
+            document.getElementById('payment-method-input').value = 'Cash on Delivery';
+        }
+        
         // Mobile Menu Functions
         function toggleMobileMenu() {
             const navContainer = document.getElementById('nav-container');
@@ -2550,7 +2899,7 @@
             document.body.style.overflow = '';
         }
         
-        // Render products grid
+        // Render products grid - Product card সুন্দর করে তৈরি
         function renderProducts(productsToRender) {
             const container = document.getElementById('products-container');
             if (!container) return;
@@ -2573,12 +2922,9 @@
                 productCard.className = 'product-card';
                 const discount = product.oldPrice ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100) : 0;
                 
-                // Create product page URL (e.g., product1.html, product2.html, etc.)
-                const productPageUrl = `product${product.id}.html`;
-                
                 productCard.innerHTML = `
                     <div class="product-image-container">
-                        <img src="${product.images[0]}" alt="${product.name}" class="product-image">
+                        <img src="${product.images[0]}" alt="${product.name}" class="product-image" onerror="this.src='https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
                         ${discount > 0 ? `<span class="product-tag">-${discount}%</span>` : ''}
                     </div>
                     <div class="product-info">
@@ -2593,9 +2939,9 @@
                         </div>
                         <p class="product-description">${product.shortDesc}</p>
                         <div class="product-actions">
-                            <a href="${productPageUrl}" class="btn btn-primary" target="_blank">
+                            <button class="btn btn-primary view-product-details" data-id="${product.id}">
                                 <i class="fas fa-eye"></i> View Details
-                            </a>
+                            </button>
                             <button class="btn btn-secondary add-to-cart" data-id="${product.id}">
                                 <i class="fas fa-cart-plus"></i> Add to Cart
                             </button>
@@ -2612,13 +2958,131 @@
                     addToCart(productId);
                 });
             });
+            
+            // Add event listeners to view details buttons
+            document.querySelectorAll('.view-product-details').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = parseInt(this.getAttribute('data-id'));
+                    showProductDetails(productId);
+                });
+            });
+        }
+        
+        // Show product details modal
+        function showProductDetails(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            
+            const modalHTML = `
+                <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 20px;">
+                    <div style="background: white; border-radius: 20px; max-width: 900px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative;">
+                        <button id="close-modal" style="position: absolute; top: 20px; right: 20px; background: #ff4757; color: white; border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 20px; cursor: pointer; z-index: 10001;">×</button>
+                        <div class="product-details">
+                            <div class="product-gallery">
+                                <img src="${product.images[0]}" alt="${product.name}" class="main-image" onerror="this.src='https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                            </div>
+                            <div class="product-info-detail">
+                                <h1>${product.name}</h1>
+                                <div class="product-rating-detail">
+                                    ${getStarRating(product.rating)}
+                                    <span style="color: #666; font-size: 16px;">(${product.reviews} reviews)</span>
+                                </div>
+                                <div class="product-price-detail">
+                                    ${formatPrice(product.price)}
+                                    ${product.oldPrice ? `<span class="old-price">${formatPrice(product.oldPrice)}</span>` : ''}
+                                </div>
+                                <p class="product-description-detail">${product.longDesc}</p>
+                                
+                                <div class="product-meta">
+                                    <p><span class="meta-label"><i class="fas fa-barcode"></i> SKU:</span> ${product.sku}</p>
+                                    <p><span class="meta-label"><i class="fas fa-layer-group"></i> Category:</span> ${product.category}</p>
+                                    <p><span class="meta-label"><i class="fas fa-box"></i> Stock:</span> 
+                                        <span class="stock-status ${product.stock > 20 ? 'in-stock' : product.stock > 0 ? 'low-stock' : 'out-of-stock'}">
+                                            ${product.stock > 20 ? 'In Stock' : product.stock > 0 ? 'Low Stock' : 'Out of Stock'} (${product.stock} units)
+                                        </span>
+                                    </p>
+                                </div>
+                                
+                                <div class="product-actions-detail">
+                                    <div class="quantity-selector">
+                                        <button class="quantity-btn" id="decrease-qty">-</button>
+                                        <input type="text" class="quantity-input" value="1" id="detail-qty">
+                                        <button class="quantity-btn" id="increase-qty">+</button>
+                                    </div>
+                                    <button class="btn btn-primary" id="add-to-cart-detail" data-id="${product.id}">
+                                        <i class="fas fa-cart-plus"></i> Add to Cart
+                                    </button>
+                                    <button class="btn btn-secondary" id="buy-now-detail" data-id="${product.id}">
+                                        <i class="fas fa-bolt"></i> Buy Now
+                                    </button>
+                                </div>
+                                
+                                <div class="product-meta">
+                                    <h3 style="margin-bottom: 15px; color: #333;">Features:</h3>
+                                    <ul style="list-style: none; padding-left: 0;">
+                                        ${product.features.map(feature => `<li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                                            <i class="fas fa-check" style="position: absolute; left: 0; color: #4CAF50;"></i> ${feature}
+                                        </li>`).join('')}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            const modalContainer = document.createElement('div');
+            modalContainer.innerHTML = modalHTML;
+            document.body.appendChild(modalContainer);
+            
+            // Close modal functionality
+            document.getElementById('close-modal').addEventListener('click', function() {
+                document.body.removeChild(modalContainer);
+            });
+            
+            // Quantity controls
+            document.getElementById('increase-qty').addEventListener('click', function() {
+                const qtyInput = document.getElementById('detail-qty');
+                let qty = parseInt(qtyInput.value);
+                if (qty < product.stock) {
+                    qtyInput.value = qty + 1;
+                }
+            });
+            
+            document.getElementById('decrease-qty').addEventListener('click', function() {
+                const qtyInput = document.getElementById('detail-qty');
+                let qty = parseInt(qtyInput.value);
+                if (qty > 1) {
+                    qtyInput.value = qty - 1;
+                }
+            });
+            
+            // Add to cart from detail
+            document.getElementById('add-to-cart-detail').addEventListener('click', function() {
+                const qty = parseInt(document.getElementById('detail-qty').value);
+                addToCart(product.id, qty);
+                document.body.removeChild(modalContainer);
+            });
+            
+            // Buy now from detail
+            document.getElementById('buy-now-detail').addEventListener('click', function() {
+                const qty = parseInt(document.getElementById('detail-qty').value);
+                addToCart(product.id, qty);
+                document.body.removeChild(modalContainer);
+                showPage('cart-page');
+            });
+            
+            // Close on background click
+            modalContainer.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    document.body.removeChild(modalContainer);
+                }
+            });
         }
         
         // Render cart page
         function renderCart() {
             const cartContainer = document.getElementById('cart-items');
-            const cartSubtotal = document.getElementById('cart-subtotal');
-            const cartTotal = document.getElementById('cart-total');
             
             if (!cartContainer) return;
             
@@ -2633,8 +3097,7 @@
                         </a>
                     </div>
                 `;
-                cartSubtotal.textContent = '৳0.00';
-                cartTotal.textContent = '৳30.00';
+                updateCartTotals(0);
                 return;
             }
             
@@ -2652,7 +3115,7 @@
                 cartItem.className = 'cart-item';
                 cartItem.innerHTML = `
                     <div class="cart-item-info">
-                        <img src="${product.images[0]}" alt="${product.name}" class="cart-item-image">
+                        <img src="${product.images[0]}" alt="${product.name}" class="cart-item-image" onerror="this.src='https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
                         <div class="cart-item-details">
                             <h3>${product.name}</h3>
                             <p class="cart-item-price">${formatPrice(product.price)} each</p>
@@ -2678,12 +3141,7 @@
                 cartContainer.appendChild(cartItem);
             });
             
-            const deliveryCharge = 30;
-            const total = subtotal + deliveryCharge;
-            
-            // Update cart totals
-            cartSubtotal.textContent = formatPrice(subtotal);
-            cartTotal.textContent = formatPrice(total);
+            updateCartTotals(subtotal);
             
             // Setup event listeners for cart buttons
             document.querySelectorAll('.quantity-btn').forEach(btn => {
@@ -2702,70 +3160,71 @@
             });
         }
         
-        // ✅ প্রোমো কোড এপ্লাই ফাংশন - ঠিক করা
-        function applyPromoCode() {
-            const promoInput = document.getElementById('promo-code');
-            const promoMessage = document.getElementById('promo-message');
-            const code = promoInput.value.trim().toUpperCase();
+        // ✅ Calculate delivery charge based on your rule
+        function calculateDeliveryCharge(totalItems) {
+            const baseCharge = 30;
+            const extraChargePer4Items = 20;
             
-            if (!code) {
-                promoMessage.innerHTML = '<span style="color: #f44336;"><i class="fas fa-exclamation-circle"></i> Please enter a promo code</span>';
-                promoMessage.style.display = 'block';
-                return;
-            }
-            
-            if (promoCodes[code]) {
-                appliedPromo = promoCodes[code];
-                promoMessage.innerHTML = `<span style="color: #4CAF50;"><i class="fas fa-check-circle"></i> ${appliedPromo.message}</span>`;
-                promoMessage.style.display = 'block';
-                
-                // আপডেট টোটাল
-                updateCheckoutTotals();
-                
-                // ইনপুট ডিজেবল
-                promoInput.disabled = true;
-                document.getElementById('apply-promo').innerHTML = '<i class="fas fa-times"></i> Remove';
-                document.getElementById('apply-promo').onclick = removePromoCode;
-                
-                // নোটিফিকেশন
-                showNotification(appliedPromo.message, 'success');
+            if (totalItems <= 4) {
+                return baseCharge;
             } else {
-                promoMessage.innerHTML = '<span style="color: #f44336;"><i class="fas fa-times-circle"></i> Invalid promo code</span>';
-                promoMessage.style.display = 'block';
-                appliedPromo = null;
-                showNotification('Invalid promo code. Please try again.', 'error');
+                // Calculate how many sets of 4 items
+                const extraSets = Math.ceil((totalItems - 4) / 4);
+                return baseCharge + (extraSets * extraChargePer4Items);
             }
         }
         
-        // ✅ প্রোমো কোড রিমুভ ফাংশন
-        function removePromoCode() {
-            appliedPromo = null;
-            const promoInput = document.getElementById('promo-code');
-            const promoMessage = document.getElementById('promo-message');
+        // Update cart totals
+        function updateCartTotals(subtotal) {
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            const deliveryCharge = calculateDeliveryCharge(totalItems);
             
-            promoInput.value = '';
-            promoInput.disabled = false;
-            promoMessage.style.display = 'none';
+            let discount = 0;
+            let finalDeliveryCharge = deliveryCharge;
             
-            document.getElementById('apply-promo').innerHTML = '<i class="fas fa-check"></i> Apply';
-            document.getElementById('apply-promo').onclick = applyPromoCode;
+            // Apply promo calculations
+            if (appliedPromo) {
+                if (appliedPromo.type === 'percentage') {
+                    discount = subtotal * (appliedPromo.value / 100);
+                } else if (appliedPromo.type === 'fixed') {
+                    discount = Math.min(appliedPromo.value, subtotal);
+                } else if (appliedPromo.type === 'shipping') {
+                    finalDeliveryCharge = 0;
+                }
+            }
             
-            // আপডেট টোটাল
-            updateCheckoutTotals();
+            const finalTotal = Math.max(0, subtotal - discount + finalDeliveryCharge);
             
-            showNotification('Promo code removed', 'info');
+            // Update cart page totals
+            document.getElementById('cart-subtotal').textContent = formatPrice(subtotal);
+            document.getElementById('cart-delivery-charge').textContent = finalDeliveryCharge === 0 ? 'FREE' : formatPrice(finalDeliveryCharge);
+            document.getElementById('cart-total').textContent = formatPrice(finalTotal);
+            
+            // Show/hide discount item
+            const cartDiscountItem = document.getElementById('cart-discount-item');
+            const cartDiscountSpan = document.getElementById('cart-discount');
+            
+            if (discount > 0) {
+                cartDiscountItem.style.display = 'flex';
+                cartDiscountSpan.textContent = formatPrice(discount);
+            } else {
+                cartDiscountItem.style.display = 'none';
+            }
         }
         
-        // ✅ চেকআউট টোটাল আপডেট ফাংশন - ঠিক করা
+        // ✅ চেকআউট টোটাল আপডেট ফাংশন - সম্পূর্ণ ঠিক করা
         function updateCheckoutTotals() {
             let productsTotal = 0;
             const orderDetails = [];
+            let totalItems = 0;
             
+            // Calculate products total
             cart.forEach(item => {
                 const product = products.find(p => p.id == item.id);
                 if (product) {
                     const itemTotal = product.price * item.quantity;
                     productsTotal += itemTotal;
+                    totalItems += item.quantity;
                     
                     orderDetails.push({
                         name: product.name,
@@ -2777,32 +3236,35 @@
                 }
             });
             
-            const deliveryCharge = 30; // ৳30 ডেলিভারি চার্জ
+            const deliveryCharge = calculateDeliveryCharge(totalItems);
             let discount = 0;
             let finalDeliveryCharge = deliveryCharge;
             
-            // প্রোমো কোড ক্যালকুলেশন
+            // Apply promo code calculations
             if (appliedPromo) {
                 if (appliedPromo.type === 'percentage') {
                     discount = productsTotal * (appliedPromo.value / 100);
                 } else if (appliedPromo.type === 'fixed') {
-                    discount = appliedPromo.value;
+                    discount = Math.min(appliedPromo.value, productsTotal);
                 } else if (appliedPromo.type === 'shipping') {
                     finalDeliveryCharge = 0;
                 }
             }
             
             const finalProductsTotal = productsTotal - discount;
-            const finalTotal = finalProductsTotal + finalDeliveryCharge;
+            const finalTotal = Math.max(0, finalProductsTotal + finalDeliveryCharge);
             
-            // হিডেন ফিল্ড আপডেট
+            // Update hidden fields
             document.getElementById('order-details-input').value = JSON.stringify(orderDetails);
             document.getElementById('total-amount-input').value = finalTotal;
+            document.getElementById('applied-promo-input').value = appliedPromo ? document.getElementById('promo-code').value : '';
+            document.getElementById('discount-amount-input').value = discount;
             
-            // অর্ডার সামারি আপডেট
+            // Update order summary box
             const summaryBox = document.getElementById('order-summary-box');
             summaryBox.innerHTML = '';
             
+            // Add product items
             orderDetails.forEach(item => {
                 const summaryItem = document.createElement('div');
                 summaryItem.className = 'order-summary-item';
@@ -2813,7 +3275,18 @@
                 summaryBox.appendChild(summaryItem);
             });
             
-            // ডিসকাউন্ট আইটেম যোগ - এই অংশ ঠিক করা
+            // Add subtotal
+            const subtotalItem = document.createElement('div');
+            subtotalItem.className = 'order-summary-item';
+            subtotalItem.style.borderTop = '2px solid #e9ecef';
+            subtotalItem.style.marginTop = '10px';
+            subtotalItem.innerHTML = `
+                <span>Subtotal</span>
+                <span>${formatPrice(productsTotal)}</span>
+            `;
+            summaryBox.appendChild(subtotalItem);
+            
+            // Add discount item if applicable
             if (discount > 0) {
                 const discountItem = document.createElement('div');
                 discountItem.className = 'order-summary-item discount-item';
@@ -2824,7 +3297,7 @@
                 summaryBox.appendChild(discountItem);
             }
             
-            // ফ্রি শিপিং শো
+            // Add free shipping discount if applicable
             if (finalDeliveryCharge === 0 && appliedPromo && appliedPromo.type === 'shipping') {
                 const shippingItem = document.createElement('div');
                 shippingItem.className = 'order-summary-item discount-item';
@@ -2835,17 +3308,27 @@
                 summaryBox.appendChild(shippingItem);
             }
             
-            // সব টোটাল শো করা
+            // Update display totals
             document.getElementById('products-total').textContent = formatPrice(productsTotal);
             document.getElementById('delivery-charge').textContent = finalDeliveryCharge === 0 ? 'FREE' : formatPrice(finalDeliveryCharge);
             document.getElementById('checkout-total').textContent = formatPrice(finalTotal);
             
-            // টুলটিপ যোগ করা
-            const totalElement = document.getElementById('checkout-total');
-            totalElement.title = `Products: ${formatPrice(productsTotal)} + Delivery: ${finalDeliveryCharge === 0 ? 'FREE' : formatPrice(finalDeliveryCharge)}${discount > 0 ? ` - Discount: ${formatPrice(discount)}` : ''}`;
+            // Show/hide discount item
+            const checkoutDiscountItem = document.getElementById('checkout-discount-item');
+            const checkoutDiscountSpan = document.getElementById('checkout-discount');
+            
+            if (discount > 0) {
+                checkoutDiscountItem.style.display = 'flex';
+                checkoutDiscountSpan.textContent = formatPrice(discount);
+            } else {
+                checkoutDiscountItem.style.display = 'none';
+            }
+            
+            // Update cart totals as well
+            updateCartTotals(productsTotal);
         }
         
-        // Render checkout form
+        // ✅ চেকআউট পেজ রেন্ডার করার সময় প্রোমো কোড রিসেট করুন
         function renderCheckoutForm() {
             if (cart.length === 0) {
                 showNotification('Your cart is empty. Add some products first!', 'warning');
@@ -2853,23 +3336,63 @@
                 return;
             }
             
-            // প্রোমো কোড রিসেট
+            // Reset promo code
             appliedPromo = null;
-            document.getElementById('promo-code').value = '';
-            document.getElementById('promo-code').disabled = false;
-            document.getElementById('promo-message').style.display = 'none';
-            document.getElementById('apply-promo').innerHTML = '<i class="fas fa-check"></i> Apply';
-            document.getElementById('apply-promo').onclick = applyPromoCode;
+            const promoInput = document.getElementById('promo-code');
+            const promoMessage = document.getElementById('promo-message');
+            const applyBtn = document.getElementById('apply-promo');
             
-            // টোটাল আপডেট
+            promoInput.value = '';
+            promoInput.disabled = false;
+            promoMessage.innerHTML = '';
+            promoMessage.className = '';
+            applyBtn.innerHTML = '<i class="fas fa-check"></i> Apply';
+            applyBtn.onclick = function() {
+                const promoInput = document.getElementById('promo-code');
+                const promoMessage = document.getElementById('promo-message');
+                const code = promoInput.value.trim().toUpperCase();
+                
+                if (!code) {
+                    promoMessage.innerHTML = '<span><i class="fas fa-exclamation-circle"></i> Please enter a promo code</span>';
+                    promoMessage.className = 'promo-error';
+                    return;
+                }
+                
+                if (promoCodes[code]) {
+                    appliedPromo = promoCodes[code];
+                    promoMessage.innerHTML = `<span><i class="fas fa-check-circle"></i> ${appliedPromo.message}</span>`;
+                    promoMessage.className = 'promo-success';
+                    
+                    // Update totals immediately
+                    updateCheckoutTotals();
+                    
+                    // Disable input and change button
+                    promoInput.disabled = true;
+                    applyBtn.innerHTML = '<i class="fas fa-times"></i> Remove';
+                    applyBtn.onclick = function() {
+                        removePromoCode();
+                    };
+                    
+                    showNotification(appliedPromo.message, 'success');
+                } else {
+                    promoMessage.innerHTML = '<span><i class="fas fa-times-circle"></i> Invalid promo code</span>';
+                    promoMessage.className = 'promo-error';
+                    appliedPromo = null;
+                    updateCheckoutTotals();
+                    showNotification('Invalid promo code. Please try again.', 'error');
+                }
+            };
+            
+            // Update totals
             updateCheckoutTotals();
         }
         
-        // Submit order function
-        function submitOrder() {
+        // ✅ অর্ডার সাবমিট করার সময় প্রোমো কোড ইনফরমেশন যোগ করুন
+        async function submitOrder() {
             // Generate order ID
-            const orderId = Date.now().toString().slice(-6);
+            const orderId = 'OPSSHOP-' + Date.now().toString().slice(-6);
             document.getElementById('order-id-number').textContent = orderId;
+            document.getElementById('order-id-input').value = orderId;
             
             // Get form data
             const form = document.getElementById('checkout-form');
@@ -2877,28 +3400,78 @@
             // Update hidden fields one more time before submission
             updateCheckoutTotals();
             
+            // Create order object for saving
+            const orderData = {
+                orderId: orderId,
+                date: new Date().toLocaleString(),
+                customerName: document.getElementById('customer-name').value,
+                customerPhone: document.getElementById('customer-phone').value,
+                customerEmail: document.getElementById('customer-email').value,
+                address: document.getElementById('address').value,
+                division: document.getElementById('division').value,
+                district: document.getElementById('district').value,
+                thana: document.getElementById('thana').value,
+                items: cart.map(item => {
+                    const product = products.find(p => p.id == item.id);
+                    return {
+                        name: product.name,
+                        quantity: item.quantity,
+                        price: product.price,
+                        total: product.price * item.quantity
+                    };
+                }),
+                subtotal: cart.reduce((total, item) => {
+                    const product = products.find(p => p.id == item.id);
+                    return total + (product.price * item.quantity);
+                }, 0),
+                deliveryCharge: parseInt(document.getElementById('delivery-charge').textContent.replace(/[৳,]/g, '')) || 0,
+                discount: appliedPromo ? (appliedPromo.type === 'percentage' ? 
+                    (cart.reduce((total, item) => {
+                        const product = products.find(p => p.id == item.id);
+                        return total + (product.price * item.quantity);
+                    }, 0) * (appliedPromo.value / 100)) : 
+                    (appliedPromo.type === 'fixed' ? appliedPromo.value : 0)) : 0,
+                promoCode: appliedPromo ? document.getElementById('promo-code').value : '',
+                total: parseInt(document.getElementById('checkout-total').textContent.replace(/[৳,]/g, '')),
+                paymentMethod: selectedPaymentMethod,
+                status: 'processing'
+            };
+            
+            // Save order to localStorage
+            orders.push(orderData);
+            localStorage.setItem('orders', JSON.stringify(orders));
+            
             // Create FormData object
             const formData = new FormData(form);
             
             // Add order ID to form data
-            formData.append('order_id', `OPSSHOP-${orderId}`);
+            formData.append('order_id', orderId);
+            formData.append('order_date', new Date().toLocaleString());
+            formData.append('total_items', cart.reduce((total, item) => total + item.quantity, 0));
             
-            // প্রোমো কোড যোগ (যদি থাকে)
-            if (appliedPromo) {
-                formData.append('promo_code', document.getElementById('promo-code').value);
-                formData.append('discount_type', appliedPromo.type);
-                formData.append('discount_value', appliedPromo.value);
-            }
-            
-            // Send form data to Formspree using AJAX
-            fetch(form.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
+            // Calculate final totals for email
+            let productsTotal = 0;
+            cart.forEach(item => {
+                const product = products.find(p => p.id == item.id);
+                if (product) {
+                    productsTotal += product.price * item.quantity;
                 }
-            })
-            .then(response => {
+            });
+            
+            formData.append('products_total', formatPrice(productsTotal));
+            formData.append('discount_applied', appliedPromo ? 'Yes' : 'No');
+            formData.append('promo_code_used', appliedPromo ? document.getElementById('promo-code').value : 'None');
+            
+            try {
+                // Send form data to Formspree using AJAX
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
                 if (response.ok) {
                     // Clear cart
                     cart = [];
@@ -2920,20 +3493,91 @@
                     
                     // প্রোমো কোড রিসেট
                     appliedPromo = null;
-                    document.getElementById('promo-code').value = '';
-                    document.getElementById('promo-code').disabled = false;
-                    document.getElementById('promo-message').style.display = 'none';
-                    document.getElementById('apply-promo').innerHTML = '<i class="fas fa-check"></i> Apply';
-                    document.getElementById('apply-promo').onclick = applyPromoCode;
+                    
+                    // Reset payment method
+                    document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
+                    document.getElementById('payment-cod').classList.add('selected');
+                    selectedPaymentMethod = 'cash_on_delivery';
+                    document.getElementById('payment-method-input').value = 'Cash on Delivery';
                 } else {
-                    return response.json().then(err => {
-                        throw new Error(err.error || 'Form submission failed');
-                    });
+                    const error = await response.json();
+                    throw new Error(error.error || 'Form submission failed');
                 }
-            })
-            .catch(error => {
+            } catch (error) {
                 console.error('Error submitting order:', error);
                 showNotification('There was an error submitting your order. Please check your internet connection and try again.', 'error');
+            }
+        }
+        
+        // Render My Orders page
+        function renderOrders() {
+            const ordersContainer = document.getElementById('orders-container');
+            
+            if (!ordersContainer) return;
+            
+            if (orders.length === 0) {
+                ordersContainer.innerHTML = `
+                    <div style="text-align: center; padding: 60px 20px;">
+                        <i class="fas fa-clipboard-list" style="font-size: 80px; color: #ddd; margin-bottom: 20px;"></i>
+                        <h3 style="color: #666; margin-bottom: 15px;">No orders yet</h3>
+                        <p style="color: #999; margin-bottom: 30px;">Start shopping to see your orders here!</p>
+                        <a href="#" data-page="home" class="btn btn-primary" style="padding: 12px 30px;">
+                            <i class="fas fa-shopping-bag"></i> Start Shopping
+                        </a>
+                    </div>
+                `;
+                return;
+            }
+            
+            ordersContainer.innerHTML = '';
+            
+            // Sort orders by date (newest first)
+            const sortedOrders = [...orders].sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            sortedOrders.forEach(order => {
+                const orderCard = document.createElement('div');
+                orderCard.className = 'order-card';
+                
+                // Calculate order total
+                const orderTotal = order.items.reduce((total, item) => total + item.total, 0) + order.deliveryCharge - order.discount;
+                
+                orderCard.innerHTML = `
+                    <div class="order-header">
+                        <div>
+                            <div class="order-id">Order #${order.orderId}</div>
+                            <div class="order-date">${order.date}</div>
+                        </div>
+                        <div class="order-status status-${order.status}">${order.status.charAt(0).toUpperCase() + order.status.slice(1)}</div>
+                    </div>
+                    
+                    <div class="order-items">
+                        ${order.items.map(item => `
+                            <div class="order-item">
+                                <img src="${products.find(p => p.name === item.name)?.images[0] || 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'}" 
+                                     alt="${item.name}" class="order-item-image">
+                                <div class="order-item-details">
+                                    <h4>${item.name}</h4>
+                                    <div>Quantity: ${item.quantity}</div>
+                                    <div class="order-item-price">${formatPrice(item.price)} each</div>
+                                </div>
+                                <div style="font-weight: 600;">${formatPrice(item.total)}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <div class="order-total">
+                        <div>
+                            <div style="font-size: 14px; color: #666;">Payment: ${order.paymentMethod.replace('_', ' ').toUpperCase()}</div>
+                            ${order.promoCode ? `<div style="font-size: 14px; color: #4CAF50;">Promo: ${order.promoCode}</div>` : ''}
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 18px; font-weight: 700; color: #ff4757;">Total: ${formatPrice(orderTotal)}</div>
+                            <div style="font-size: 14px; color: #666;">Delivery to: ${order.thana}, ${order.district}</div>
+                        </div>
+                    </div>
+                `;
+                
+                ordersContainer.appendChild(orderCard);
             });
         }
         
