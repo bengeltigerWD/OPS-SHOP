@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Black Signature Date Notebook — O.P.S Shop</title>
+<title>Black Signature Date Notebook — Obsidium Papers</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -540,25 +540,65 @@ img{max-width:100%;display:block}
   .info-panel h1{font-size:24px}
   .offer-price{font-size:28px}
 }
+/* ── MOBILE SEARCH (product pages) ── */
+.mobile-search-wrap{
+  display:none;background:linear-gradient(135deg,var(--primary-dark),var(--primary));
+  padding:8px 16px 12px;
+}
+.mobile-search-wrap .ms-inner{
+  display:flex;background:rgba(255,255,255,.18);
+  border:1.5px solid rgba(255,255,255,.25);
+  border-radius:99px;overflow:hidden;
+}
+.mobile-search-wrap input{
+  flex:1;padding:9px 15px;background:transparent;
+  border:none;outline:none;color:#fff;font-size:14px;
+  font-family:'Hind Siliguri',sans-serif;
+}
+.mobile-search-wrap input::placeholder{color:rgba(255,255,255,.62)}
+.mobile-search-wrap button{
+  padding:9px 16px;background:var(--accent2);border:none;
+  cursor:pointer;color:#333;font-weight:700;font-size:13px;
+}
+
 @media(max-width:640px){
   .header-search{display:none}
-  .logo-name{font-size:19px}
+  .mobile-search-wrap{display:block}
+  .logo-name{font-size:14px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .menu-btn{display:flex}
   .site-nav{display:none}
-  .main-slider{height:280px}
-  .rel-grid{grid-template-columns:repeat(2,1fr);gap:12px}
-  .footer-grid{grid-template-columns:1fr;gap:24px}
-  #wa-float{width:56px;height:56px;bottom:18px;right:18px}
-  #wa-float i{font-size:26px}
-  .btn-row{flex-direction:column}
+  .main-slider{height:260px}
+  .main-slider-thumb{height:58px;width:58px}
+  .product-card{padding:18px 14px}
+  .product-grid{gap:20px}
+  .info-panel h1{font-size:20px}
+  .offer-price{font-size:26px}
+  .old-price{font-size:15px}
+  .rel-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .rel-name{font-size:13px}
+  .rel-price{font-size:14px}
+  .footer-grid{grid-template-columns:1fr;gap:22px}
+  #wa-float{width:54px;height:54px;bottom:18px;right:18px}
+  #wa-float i{font-size:24px}
+  .btn-row{flex-direction:column;gap:10px}
   .cta-btn{width:100%}
-  .trust-strip{grid-template-columns:repeat(2,1fr)}
-  .section-title{font-size:24px}
+  .trust-strip{grid-template-columns:repeat(2,1fr);gap:8px}
+  .trust-item{padding:10px 8px}
+  .trust-item span{font-size:11px}
+  .section-title{font-size:22px}
+  .meta-table{gap:10px}
+  .meta-row{padding:10px 12px;font-size:13px}
+  .gift-zone{padding:20px 16px}
+  .gift-zone-items{grid-template-columns:1fr 1fr;gap:10px}
+  .gift-item{padding:14px 10px}
 }
 @media(max-width:420px){
-  .main-slider{height:240px}
+  .main-slider{height:220px}
   .gift-zone-items{grid-template-columns:1fr}
-  .product-card{padding:18px}
+  .product-card{padding:16px 12px}
+  .info-panel h1{font-size:18px}
+  .offer-price{font-size:22px}
+  .rel-grid{gap:8px}
 }
 </style>
 </head>
@@ -569,8 +609,8 @@ img{max-width:100%;display:block}
   <div class="header-inner">
     <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
     <a href="index.html" class="logo-link">
-      <div class="logo-box"><img src="logo.png" alt="O.P.S Shop" id="logoImg" onerror="this.src='https://placehold.co/60x60/7c5cbf/fff?text=OPS'"></div>
-      <span class="logo-name">O.P.S <span>Shop</span></span>
+      <div class="logo-box"><img src="logo.png" alt="Obsidium Papers" id="logoImg" onerror="this.src='https://placehold.co/60x60/7c5cbf/fff?text=OPS'"></div>
+      <span class="logo-name">Obsidium <span>Papers</span></span>
     </a>
     <div class="header-search">
       <input type="text" id="searchInp" placeholder="পণ্য খুঁজুন...">
@@ -603,7 +643,7 @@ img{max-width:100%;display:block}
   <div class="nav-overlay" id="navOverlay"></div>
   <div class="nav-drawer">
     <div class="drawer-head">
-      <span style="font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:var(--primary)">O.P.S Shop</span>
+      <span style="font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:var(--primary)">Obsidium Papers</span>
       <button class="drawer-close" id="drawerClose"><i class="fas fa-times"></i></button>
     </div>
     <a href="index.html"><i class="fas fa-home"></i> Home</a>
@@ -703,6 +743,7 @@ img{max-width:100%;display:block}
         </div>
 
         <div class="meta-table">
+          <div class="meta-row"><span class="meta-key"><i class="fas fa-book-open"></i> পৃষ্ঠা সংখ্যা</span><span class="meta-val">১২০টি পেজ (120 pages)</span></div>
           <div class="meta-row"><span class="meta-key"><i class="fas fa-barcode"></i> SKU</span><span class="meta-val">NOTE-BLK-DATE-001</span></div>
           <div class="meta-row"><span class="meta-key"><i class="fas fa-tag"></i> ক্যাটাগরি</span><span class="meta-val">Notebook</span></div>
           <div class="meta-row"><span class="meta-key"><i class="fas fa-palette"></i> পেজ কালার</span><span class="meta-val">Black (কালো)</span></div>
@@ -808,7 +849,7 @@ img{max-width:100%;display:block}
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-col">
-        <h3>O.P.S Shop</h3>
+        <h3>Obsidium Papers</h3>
         <p>আপনার বিশ্বস্ত অনলাইন স্টেশনারি শপ। মানসম্পন্ন পণ্য, সেরা দাম, দ্রুত ডেলিভারি।</p>
         <div class="footer-socials">
           <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -833,26 +874,26 @@ img{max-width:100%;display:block}
       </div>
       <div class="footer-col">
         <h3>যোগাযোগ</h3>
-        <p>📧 ajmirahemed75@gmail.com</p>
+        <p>📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="60010a0d09120108050d0504575520070d01090c4e030f0d">[email&#160;protected]</a></p>
         <p>📞 +880 1938-954599</p>
         <p>⏰ সকাল ৯টা – রাত ১১টা (প্রতিদিন)</p>
         <p>📍 বাংলাদেশ</p>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2024 <strong>O.P.S Shop</strong> — সর্বস্বত্ব সংরক্ষিত</p>
+      <p>&copy; 2024 <strong>Obsidium Papers</strong> — সর্বস্বত্ব সংরক্ষিত</p>
     </div>
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const IMGS = ["blacknote1.jpg", "blacknote2.jpg", "blacknote3.jpg"];
 const PNAME  = `Black Signature Date Notebook`;
 const PPRICE = 180;
 const PIMG0  = IMGS[0]||'';
 const PRATING = 4.9;
 const PREVS   = 15;
-const WA_MSG  = 'Hello O.P.S Shop! I want to order the Black Signature Date Notebook. Please share details.';
+const WA_MSG  = 'Hello Obsidium Papers! I want to order the Black Signature Date Notebook. Please share details.';
 
 /* ── CART ── */
 let cart = JSON.parse(localStorage.getItem('cart')||'[]');
@@ -934,7 +975,7 @@ function showNotif(msg,type){
 
 /* ── INIT ── */
 document.addEventListener('DOMContentLoaded',()=>{
-  document.title = PNAME + ' — O.P.S Shop';
+  document.title = PNAME + ' — Obsidium Papers';
 
   // Main product stars
   document.getElementById('mainStars').innerHTML = starHTML(PRATING);
@@ -984,10 +1025,4 @@ document.addEventListener('DOMContentLoaded',()=>{
   document.getElementById('drawerClose').onclick=()=>nav.classList.remove('open');
 
   // Search
-  const doSearch=()=>{const q=document.getElementById('searchInp').value.trim();if(q)location.href='index.html?search='+encodeURIComponent(q);};
-  document.getElementById('searchBtn').onclick=doSearch;
-  document.getElementById('searchInp').onkeydown=e=>{if(e.key==='Enter')doSearch();};
-});
-</script>
-</body>
-</html>
+  const doSearch=()=>{const q=document.getElementById('searchInp').value.trim();if(
